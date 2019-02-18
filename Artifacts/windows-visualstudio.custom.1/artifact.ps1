@@ -36,19 +36,19 @@ function DownloadToFilePath ($downloadUrl, $targetFile)
 
         try
         {
-            $WebClient = New-Object System.Net.WebClient
-            $WebClient.DownloadFile($downloadUrl,$targetFile)
-            break
+ $WebClient = New-Object System.Net.WebClient
+ $WebClient.DownloadFile($downloadUrl,$targetFile)
+ break
         }
         catch
         {
-            Write-Output "Caught exception during download..."
-            if ($_.Exception.InnerException){
-                Write-Output "InnerException: $($_.InnerException.Message)"
-            }
-            else {
-                Write-Output "Exception: $($_.Exception.Message)"
-            }
+ Write-Output "Caught exception during download..."
+ if ($_.Exception.InnerException){
+     Write-Output "InnerException: $($_.InnerException.Message)"
+ }
+ else {
+     Write-Output "Exception: $($_.Exception.Message)"
+ }
         }
 
     } while ($downloadAttempts -lt 5)
@@ -77,40 +77,40 @@ if($version -eq '2015' )
 elseif ($version -eq '2017')
 {
     if($sku -eq 'Professional') {
-        $argumentList = " `
-            --add Microsoft.Net.ComponentGroup.TargetingPacks.Common `
-            --add Microsoft.VisualStudio.ComponentGroup.Web.CloudTools `
-            --add Microsoft.VisualStudio.Component.DiagnosticTools `
-            --add Microsoft.VisualStudio.Component.EntityFramework `
-            --add Microsoft.VisualStudio.Component.Wcf.Tooling `
-            --add Microsoft.VisualStudio.Component.AspNet45 `
-            --add Microsoft.VisualStudio.Component.AppInsights.Tools `
-            --add Microsoft.VisualStudio.Component.WebDeploy `
-            --add Microsoft.VisualStudio.ComponentGroup.IISDevelopment `
-            --add Microsoft.VisualStudio.Web.Mvc4.ComponentGroup `
-            --add Microsoft.Net.ComponentGroup.4.7.DeveloperTools `
-            --add Microsoft.Net.ComponentGroup.4.7.1.DeveloperTools `
-            --add Microsoft.Net.ComponentGroup.4.7.2.DeveloperTools `
-            --add Microsoft.Net.Core.Component.SDK `
-            --add Microsoft.Net.Core.Component.SDK.1x `
-            --add Microsoft.NetCore.1x.ComponentGroup.Web `
-            --add Microsoft.Component.Azure.DataLake.Tools `
-            --add Microsoft.VisualStudio.ComponentGroup.Azure.ResourceManager.Tools `
-            --add Microsoft.VisualStudio.ComponentGroup.Azure.CloudServices `
-            --add Microsoft.VisualStudio.Component.Azure.MobileAppsSdk `
-            --add Microsoft.VisualStudio.Component.Azure.ServiceFabric.Tools `
-            --add Microsoft.VisualStudio.Component.Azure.Storage.AzCopy `
-            --add Microsoft.VisualStudio.Component.TextTemplating `
-            --add Component.Dotfuscator `
-            --add Microsoft.Component.VC.Runtime.OSSupport `
-            --add Microsoft.VisualStudio.Component.ClassDesigner `
-            --add Microsoft.VisualStudio.Component.VC.ATL `
-            --add Microsoft.VisualStudio.Component.VC.ATLMFC `
-            --add Microsoft.VisualStudio.Component.VC.CoreIde `
-            --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64 `
-            --add Microsoft.VisualStudio.Component.DslTools `
-            --add Microsoft.Component.CodeAnalysis.SDK `
-            --quiet --norestart --wait"
+        $argumentList = "|
+        --add Microsoft.Net.ComponentGroup.TargetingPacks.Common|
+        --add Microsoft.VisualStudio.ComponentGroup.Web.CloudTools|
+        --add Microsoft.VisualStudio.Component.DiagnosticTools|
+        --add Microsoft.VisualStudio.Component.EntityFramework|
+        --add Microsoft.VisualStudio.Component.Wcf.Tooling|
+        --add Microsoft.VisualStudio.Component.AspNet45|
+        --add Microsoft.VisualStudio.Component.AppInsights.Tools|
+        --add Microsoft.VisualStudio.Component.WebDeploy|
+        --add Microsoft.VisualStudio.ComponentGroup.IISDevelopment|
+        --add Microsoft.VisualStudio.Web.Mvc4.ComponentGroup|
+        --add Microsoft.Net.ComponentGroup.4.7.DeveloperTools|
+        --add Microsoft.Net.ComponentGroup.4.7.1.DeveloperTools|
+        --add Microsoft.Net.ComponentGroup.4.7.2.DeveloperTools|
+        --add Microsoft.Net.Core.Component.SDK|
+        --add Microsoft.Net.Core.Component.SDK.1x|
+        --add Microsoft.NetCore.1x.ComponentGroup.Web|
+        --add Microsoft.Component.Azure.DataLake.Tools|
+        --add Microsoft.VisualStudio.ComponentGroup.Azure.ResourceManager.Tools|
+        --add Microsoft.VisualStudio.ComponentGroup.Azure.CloudServices|
+        --add Microsoft.VisualStudio.Component.Azure.MobileAppsSdk|
+        --add Microsoft.VisualStudio.Component.Azure.ServiceFabric.Tools|
+        --add Microsoft.VisualStudio.Component.Azure.Storage.AzCopy|
+        --add Microsoft.VisualStudio.Component.TextTemplating|
+        --add Component.Dotfuscator|
+        --add Microsoft.Component.VC.Runtime.OSSupport|
+        --add Microsoft.VisualStudio.Component.ClassDesigner|
+        --add Microsoft.VisualStudio.Component.VC.ATL|
+        --add Microsoft.VisualStudio.Component.VC.ATLMFC|
+        --add Microsoft.VisualStudio.Component.VC.CoreIde|
+        --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64|
+        --add Microsoft.VisualStudio.Component.DslTools|
+        --add Microsoft.Component.CodeAnalysis.SDK|
+        --quiet --norestart --wait"
 
         $downloadUrl = 'https://download.visualstudio.microsoft.com/download/pr/100196700/14dd70405e8244481b35017b9a562edd/vs_Professional.exe'
     }
