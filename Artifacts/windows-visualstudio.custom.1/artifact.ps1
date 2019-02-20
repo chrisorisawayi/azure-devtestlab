@@ -1,13 +1,13 @@
 Param(
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory=$false)]
     [ValidateSet("2015","2017")] 
     [string] $version,
 
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory=$false)]
     [ValidateSet("Professional","Enterprise")] 
     [string] $sku,
 
-    [Parameter()]
+    [Parameter(Mandatory=$false)]
     [string] $installerArgs
 )
 
