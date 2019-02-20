@@ -14,8 +14,7 @@
       "displayName": "Version",
       "description": "The Visual Studio Version",
       "allowedValues": [
-        "2015",
-        "2017"
+        "2017"      
       ]
     },
     "sku": {
@@ -23,8 +22,7 @@
       "displayName": "SKU",
       "description": "The Visual Studio SKU to install.",
       "allowedValues": [
-        "Enterprise",
-        "Professional"
+        "Professional"       
       ]
     },
     "installerArgs": {
