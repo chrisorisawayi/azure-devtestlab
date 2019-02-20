@@ -1,14 +1,14 @@
 Param(
-    [Parameter(Mandatory=$false)]
-    [ValidateSet("2015","2017")] 
-    [string] $version,
+    #[Parameter(Mandatory=$false)]
+    #[ValidateSet("2015","2017")] 
+    #[string] $version,
 
-    [Parameter(Mandatory=$false)]
-    [ValidateSet("Professional","Enterprise")] 
-    [string] $sku,
+    #[Parameter(Mandatory=$false)]
+    #[ValidateSet("Professional","Enterprise")] 
+    #[string] $sku,
 
-    [Parameter(Mandatory=$false)]
-    [string] $installerArgs
+    #[Parameter(Mandatory=$false)]
+    #[string] $installerArgs
 )
 
 function DownloadToFilePath ($downloadUrl, $targetFile)
