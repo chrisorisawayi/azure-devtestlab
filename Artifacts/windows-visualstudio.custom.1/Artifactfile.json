@@ -24,17 +24,10 @@
       "allowedValues": [
         "Professional"       
       ]
-    },
-    "installerArgs": {
-      "type": "string",
-      "defaultValue": "",
-      "allowEmpty": true,
-      "displayName": "Optional args passed to VS installer",
-      "description": "Additional arguments to pass when installing VS."
     }
   },
   "runCommand": {
-    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./artifact-main.ps1 -version ''', parameters('version'), ''' -sku ''', parameters('sku'), ''' -installerArgs ', '''', parameters('installerArgs'), '''', '\"')]"
+    "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./artifact-main.ps1 -version ''', parameters('version'), ''' -sku ''', parameters('sku'), '''  '\"')]"
   },
   "postDeployActions": [
     {
