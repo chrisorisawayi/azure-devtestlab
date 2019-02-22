@@ -61,7 +61,7 @@ try
     {
         $scriptArgs = $scriptLine.Substring($scriptArgIndex)
     }
-    
+
     invoke-expression ".\artifact.ps1 $scriptArgs"
 
     Write-Host 'Artifact installed successfully.'
