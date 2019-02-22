@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-  "title": "Visual Studio 2017ii - LRS ",
+  "title": "Visual Studio 2017 - LRS ",
   "description": "Installs Visual Studio with LRS components",
   "publisher": "Microsoft",
   "tags": [
