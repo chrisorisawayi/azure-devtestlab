@@ -55,6 +55,9 @@ $downloadUrl = 'https://download.visualstudio.microsoft.com/download/pr/10019670
 $localFile = Join-Path $logFolder 'vsinstaller.exe'
 DownloadToFilePath $downloadUrl $localFile
 
+Write-Output "Installing IIS Web Server - Dependency required by Development Time IIS Support Visual Studio component"
+Install-windowsfeature web-webserver
+
 Write-Output "Running install with the following arguments: $argumentList"
 $retCode = Start-Process -FilePath $localFile -ArgumentList $argumentList -Wait -PassThru
 
