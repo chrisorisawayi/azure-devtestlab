@@ -29,7 +29,7 @@
 $ErrorActionPreference = "Stop"
 
 # Ensure we set the working directory to that of the script.
-pushd $PSScriptRoot
+push-location $PSScriptRoot
 
 ###################################################################################################
 
@@ -62,11 +62,11 @@ try
         $scriptArgs = $scriptLine.Substring($scriptArgIndex)
     }
 
-    iex ".\artifact.ps1 $scriptArgs"
+    invoke-expression ".\artifact.ps1 $scriptArgs"
 
     Write-Host 'Artifact installed successfully.'
 }
 finally
 {
-    popd
+    pop-location
 }
