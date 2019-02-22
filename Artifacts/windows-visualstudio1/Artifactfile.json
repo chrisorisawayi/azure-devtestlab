@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-  "title": "Visual Studio 2017a - LRS ",
+  "title": "Visual Studio 2017b - LRS ",
   "description": "Installs Visual Studio with LRS components",
   "publisher": "Microsoft",
   "tags": [
@@ -13,13 +13,6 @@
       "type": "string",
       "displayName": "Version",
       "description": "The Visual Studio Version"
-    },
-    "installerArgs": {
-      "type": "string",
-      "defaultValue": "",
-      "allowEmpty": true,
-      "displayName": "Optional args passed to VS installer",
-      "description": "Additional arguments to pass when installing VS."
     }
   },
   "runCommand": {
