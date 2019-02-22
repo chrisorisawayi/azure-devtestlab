@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-  "title": "Visual Studio2",
-  "description": "Installs Visual Studio",
+  "title": "Visual Studio - LRS ",
+  "description": "Installs Visual Studio with LRS specified components",
   "publisher": "Microsoft",
   "tags": [
     "Windows"
