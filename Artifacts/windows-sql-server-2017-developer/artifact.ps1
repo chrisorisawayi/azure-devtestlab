@@ -46,13 +46,13 @@ function DownloadToFilePath ($downloadUrl, $targetFile)
     }
 }
 
-Write-Output "Installing Visual Studio $version $sku"
-$logFolder = Join-path -path $env:ProgramData -childPath "DTLArt_VS"
+Write-Output "Installing SQL Server 2017 Developer"
+$logFolder = Join-path -path $env:ProgramData -childPath "DTLArt_SQLDev"
 
 $argumentList = " /Q /IAcceptSQLServerLicenseTerms=True /ACTION=Install /SUPPRESSPRIVACYSTATEMENTNOTICE=True /ENU=True /FEATURES=SQLENGINE,FULLTEXT,CONN,IS,BC,SDK /INSTANCENAME=LRSDEV /INSTALLSHAREDDIR=`"C:\Program Files\Microsoft SQL Server`" /INSTANCEID=LRSDEV /INSTANCEDIR=`"C:\Program Files\Microsoft SQL Server`" /AGTSVCSTARTUPTYPE=Automatic /ISSVCSTARTUPTYPE=Automatic /SQLSVCSTARTUPTYPE=Automatic /SQLCOLLATION=SQL_Latin1_General_CP1_CI_AS /SQLSYSADMINACCOUNTS=BUILTIN\Administrators /SQLTEMPDBFILECOUNT=4 /SQLTEMPDBFILESIZE=1024 /SQLTEMPDBFILEGROWTH=64 /SQLTEMPDBLOGFILESIZE=8 /SQLTEMPDBLOGFILEGROWTH=64 /BROWSERSVCSTARTUPTYPE=Disabled"
 $downloadUrl = 'https://download.microsoft.com/download/E/F/2/EF23C21D-7860-4F05-88CE-39AA114B014B/SQLServer2017-x64-ENU-Dev.iso'
 
-$localFile = Join-Path $logFolder 'vsinstaller.exe'
+$localFile = Join-Path $logFolder 'SQLServer2017-x64-ENU-Dev.iso'
 DownloadToFilePath $downloadUrl $localFile
 
 if(![String]::IsNullOrWhiteSpace($installerArgs))
@@ -60,6 +60,13 @@ if(![String]::IsNullOrWhiteSpace($installerArgs))
     Write-Output "InstallerArgs value: $installerArgs"
     $argumentList = "$installerArgs $argumentList"
 }
+
+#Mount installation ISO and change to mount path.
+$mountVolume = Mount-DiskImage -ImagePath $localFile -PassThru
+$driveLetter = ($mountVolume | Get-Volume).DriveLetter
+$drivePath = $driveLetter + ":"
+push-location -path "$drivePath"
+$localFile = $drivePath + "\Setup.exe"
 
 Write-Output "Running install with the following arguments: $argumentList"
 $retCode = Start-Process -FilePath $localFile -ArgumentList $argumentList -Wait -PassThru
@@ -74,5 +81,8 @@ if ($retCode.ExitCode -ne 0 -and $retCode.ExitCode -ne 3010)
 }
 else
 {
+    #Dismount the installation ISO
+    pop-location
+    Dismoutn-DiskImage -ImagePath $localFile
     Write-Output "Visual Studio install succeeded. Rebooting..."
 }
