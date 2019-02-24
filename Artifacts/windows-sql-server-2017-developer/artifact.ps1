@@ -50,7 +50,7 @@ Write-Output "Installing Visual Studio $version $sku"
 $logFolder = Join-path -path $env:ProgramData -childPath "DTLArt_VS"
 
 $argumentList = " /Q /IAcceptSQLServerLicenseTerms=True /ACTION=Install /SUPPRESSPRIVACYSTATEMENTNOTICE=True /ENU=True /FEATURES=SQLENGINE,FULLTEXT,CONN,IS,BC,SDK /INSTANCENAME=LRSDEV /INSTALLSHAREDDIR=`"C:\Program Files\Microsoft SQL Server`" /INSTANCEID=LRSDEV /INSTANCEDIR=`"C:\Program Files\Microsoft SQL Server`" /AGTSVCSTARTUPTYPE=Automatic /ISSVCSTARTUPTYPE=Automatic /SQLSVCSTARTUPTYPE=Automatic /SQLCOLLATION=SQL_Latin1_General_CP1_CI_AS /SQLSYSADMINACCOUNTS=BUILTIN\Administrators /SQLTEMPDBFILECOUNT=4 /SQLTEMPDBFILESIZE=1024 /SQLTEMPDBFILEGROWTH=64 /SQLTEMPDBLOGFILESIZE=8 /SQLTEMPDBLOGFILEGROWTH=64 /BROWSERSVCSTARTUPTYPE=Disabled"
-$downloadUrl = 'https://download.visualstudio.microsoft.com/download/pr/100196700/14dd70405e8244481b35017b9a562edd/vs_Professional.exe'
+$downloadUrl = 'https://download.microsoft.com/download/E/F/2/EF23C21D-7860-4F05-88CE-39AA114B014B/SQLServer2017-x64-ENU-Dev.iso'
 
 $localFile = Join-Path $logFolder 'vsinstaller.exe'
 DownloadToFilePath $downloadUrl $localFile
