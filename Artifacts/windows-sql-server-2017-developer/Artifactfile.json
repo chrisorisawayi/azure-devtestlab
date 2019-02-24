@@ -14,7 +14,7 @@
   },
   "postDeployActions": [
     {
-      "action": "none"
+      "action": "restart"
     }
   ]
 }
