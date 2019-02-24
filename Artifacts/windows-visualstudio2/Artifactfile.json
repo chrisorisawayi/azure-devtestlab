@@ -8,12 +8,7 @@
   ],
   "iconUri": "https://www.visualstudio.com/wp-content/uploads/2017/11/microsoft-visual-studio.svg",
   "targetOsType": "Windows",
-  "parameters": {
-    "version": {
-      "type": "string",
-      "displayName": "Version",
-      "description": "The Visual Studio Version"
-    },  
+  "parameters": {},  
   "runCommand": {
     "commandToExecute": "powershell.exe -ExecutionPolicy bypass \"& ./artifact-main.ps1 \""  
   },
@@ -22,5 +17,4 @@
       "action": "restart"
     }
   ]
-  }
 }
