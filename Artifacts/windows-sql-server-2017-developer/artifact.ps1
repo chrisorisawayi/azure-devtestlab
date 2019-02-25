@@ -83,6 +83,6 @@ else
 {
     #Dismount the installation ISO
     pop-location
-    Dismoutn-DiskImage -ImagePath $localFile
-    Write-Output "Visual Studio install succeeded. Rebooting..."
+    Dismount-DiskImage -ImagePath $localFile
+    Write-Output "SQL Server 2017 Developer install succeeded. Rebooting..."
 }
