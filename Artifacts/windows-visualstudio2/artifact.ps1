@@ -47,16 +47,13 @@ function DownloadToFilePath ($downloadUrl, $targetFile)
 }
 
 Write-Output "Installing Visual Studio $version $sku"
-$logFolder = Join-path -path $env:ProgramData -childPath "DTLArt_VS"
+$logFolder = Join-path -path $env:ProgramData -childPath "DTLArt_SQL"
 
-$argumentList = "--add Microsoft.VisualStudio.Workload.ManagedDesktop --add Microsoft.VisualStudio.Workload.NetWeb --add Microsoft.VisualStudio.Workload.Azure --add Microsoft.VisualStudio.Workload.VisualStudioExtension --add microsoft.net.componentgroup.targetingpacks.common --add microsoft.visualstudio.component.entityframework --add microsoft.net.componentgroup.4.7.developertools --add microsoft.net.componentgroup.4.7.1.developertools --add microsoft.net.componentgroup.4.7.2.developertools --add microsoft.visualstudio.component.wcf.tooling --add microsoft.visualstudio.component.appinsights.tools --add microsoft.visualstudio.component.aspnet45 --add microsoft.visualstudio.component.webdeploy --add microsoft.visualstudio.componentgroup.iisdevelopment --add microsoft.visualstudio.web.mvc4.componentgroup --add microsoft.netcore.componentgroup.web --add microsoft.netcore.1x.componentgroup.web --add microsoft.component.azure.datalake.tools --add microsoft.visualstudio.componentgroup.azure.resourcemanager.tools --add microsoft.visualstudio.componentgroup.azure.cloudservices --add microsoft.visualstudio.component.azure.mobileappssdk --add microsoft.visualstudio.component.azure.servicefabric.tools --add microsoft.component.codeanalysis.sdk --quiet --norestart --wait"
-$downloadUrl = 'https://download.visualstudio.microsoft.com/download/pr/100196700/14dd70405e8244481b35017b9a562edd/vs_Professional.exe'
+$argumentList = " /Q /IAcceptSQLServerLicenseTerms=True /ACTION=Install /SUPPRESSPRIVACYSTATEMENTNOTICE=True /ENU=True /FEATURES=SQLENGINE,FULLTEXT,CONN,IS,BC,SDK /INSTANCENAME=LRSDEV /INSTALLSHAREDDIR=`"C:\Program Files\Microsoft SQL Server`" /INSTANCEID=LRSDEV /INSTANCEDIR=`"C:\Program Files\Microsoft SQL Server`" /AGTSVCSTARTUPTYPE=Automatic /ISSVCSTARTUPTYPE=Automatic /SQLSVCSTARTUPTYPE=Automatic /SQLCOLLATION=SQL_Latin1_General_CP1_CI_AS /SQLSYSADMINACCOUNTS=BUILTIN\Administrators /SQLTEMPDBFILECOUNT=4 /SQLTEMPDBFILESIZE=1024 /SQLTEMPDBFILEGROWTH=64 /SQLTEMPDBLOGFILESIZE=8 /SQLTEMPDBLOGFILEGROWTH=64 /BROWSERSVCSTARTUPTYPE=Disabled"
+$downloadUrl = 'https://sqlserverdownloadurl'
 
-$localFile = Join-Path $logFolder 'vsinstaller.exe'
+$localFile = Join-Path $logFolder 'sqlserver2017developer.exe'
 DownloadToFilePath $downloadUrl $localFile
-
-Write-Output "Installing IIS Web Server - Dependency required by Development Time IIS Support Visual Studio component"
-Install-windowsfeature web-webserver
 
 Write-Output "Running install with the following arguments: $argumentList"
 $retCode = Start-Process -FilePath $localFile -ArgumentList $argumentList -Wait -PassThru
